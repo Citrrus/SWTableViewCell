@@ -87,7 +87,8 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
     return self;
 }
 
-- (void)initializer {
+- (void)initializer
+{
     // Check if the UITableView will display Indices on the right. If that's the case, add a padding
     if([self.containingTableView.dataSource respondsToSelector:@selector(sectionIndexTitlesForTableView:)])
     {
@@ -153,7 +154,6 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
     self.cellScrollView.scrollEnabled = YES;
     self.containingTableView.scrollEnabled = YES;
     self.tapGestureRecognizer.enabled = YES;
-
 }
 
 #pragma mark - Properties
@@ -552,10 +552,6 @@ static NSString * const kTableViewCellContentView = @"UITableViewCellContentView
         // Expose the left button view
         self.scrollViewButtonViewLeft.frame = CGRectMake([self leftUtilityButtonsWidth], 0.0f, scrollViewWidth, self.height);
         
-        CGPoint offset = scrollView.contentOffset;
-        offset.x = MAX(0, scrollView.contentOffset.x);
-        
-        scrollView.contentOffset = offset;
     }
 }
 

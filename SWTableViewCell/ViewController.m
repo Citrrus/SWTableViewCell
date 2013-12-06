@@ -23,19 +23,21 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 90;
     self.tableView.allowsSelection = NO; // We essentially implement our own selection
+    
     self.navigationItem.title = @"Pull to Toggle Cell Type";
     
+    // Setup refresh control for example app
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(toggleCells:) forControlEvents:UIControlEventValueChanged];
     refreshControl.tintColor = [UIColor blueColor];
+    
     [self.tableView addSubview:refreshControl];
     self.refreshControl = refreshControl;
 
@@ -47,6 +49,8 @@
     _sections = [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
     
     _testArray = [[NSMutableArray alloc] init];
+    
+    self.useCustomCells = NO;
     
     for (int i = 0; i < _sections.count; ++i) {
         [_testArray addObject:[NSMutableArray array]];
